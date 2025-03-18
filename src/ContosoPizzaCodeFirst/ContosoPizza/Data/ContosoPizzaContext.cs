@@ -21,6 +21,7 @@ public class ContosoPizzaContext : DbContext
     {
         string connStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ContosoPizza-Part1;Integrated Security=True;";
         optionsBuilder.UseSqlServer(connStr);
+        //optionsBuilder.UseSqlLite(connStr);
     }
 }
 
