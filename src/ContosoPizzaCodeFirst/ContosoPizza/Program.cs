@@ -1,5 +1,6 @@
 ﻿using ContosoPizza.Data;
 using ContosoPizza.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ContosoPizza
 {
@@ -34,12 +35,14 @@ namespace ContosoPizza
 
         static void UpdateData(ContosoPizzaContext context)
         {
-            var veggieSP = context.Products.Where(p => p.Name == veggie).FirstOrDefault();
+            Product? veggieSP = context.Products.Where(p => p.Name == veggie).FirstOrDefault();
+            
 
             if(veggieSP is Product)
             {
                 veggieSP.Price = 10.99M;
             }
+            context.Attach(veggieSP).State = EntityState.Modified;
 
             context.SaveChanges();
         }
