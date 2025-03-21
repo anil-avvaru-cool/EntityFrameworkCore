@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ContosoPizza.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class first : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -49,7 +49,7 @@ namespace ContosoPizza.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderPlaced = table.Column<DateTime>(type: "datetime2", nullable: false),
                     OrderFulfilled = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CustomerId = table.Column<int>(type: "int", nullable: false)
+                    CustomerId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -58,8 +58,7 @@ namespace ContosoPizza.Migrations
                         name: "FK_Orders_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(

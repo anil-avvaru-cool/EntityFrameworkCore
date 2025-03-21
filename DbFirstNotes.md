@@ -2,6 +2,7 @@
 
 ConnString example:
 "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ContosoPizza-Part1;Integrated Security=True;"
+"Data Source=anil-avvaru-pc;Initial Catalog=ContosoPizza-Part1;Integrated Security=True;Encrypt=False"
 Powershell:
 
 **With DataAnnotations:**

@@ -33,9 +33,6 @@ namespace ContosoPizza.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -60,7 +57,7 @@ namespace ContosoPizza.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("OrderFulfilled")
@@ -124,13 +121,9 @@ namespace ContosoPizza.Migrations
 
             modelBuilder.Entity("ContosoPizza.Models.Order", b =>
                 {
-                    b.HasOne("ContosoPizza.Models.Customer", "Customer")
+                    b.HasOne("ContosoPizza.Models.Customer", null)
                         .WithMany("Orders")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
+                        .HasForeignKey("CustomerId");
                 });
 
             modelBuilder.Entity("ContosoPizza.Models.OrderDetail", b =>

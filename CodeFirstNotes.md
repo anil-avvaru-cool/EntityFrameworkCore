@@ -1,13 +1,13 @@
 # Code First approach
 
-### Import namespaces
+### Install and Import nuget packages
 
 - Microsoft.EntityFrameworkCore.SqlServer
 - Microsoft.EntityFrameworkCore.Tools
 - Microsoft.EntityFrameworkCore.Design
 
 ### Add models
-Example: Order, Customer
+Example: Order, Customer, Product, OrderDetail
 
 ### Commands
 Package console/Powershell
@@ -24,6 +24,7 @@ Using dotnet tool
 
 - dotnet tool install -g dotnet-ef
 - dotnet ef migrations add InitialCreate
+- dotnet ef database update
 
 
 ###

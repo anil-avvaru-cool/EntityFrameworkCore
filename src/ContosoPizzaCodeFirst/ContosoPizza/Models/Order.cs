@@ -16,6 +16,7 @@ namespace ContosoPizza.Models
         // Shadow property
         public int CustomerId { get; set; }
 
+        // Navigation property
         public Customer Customer { get; set; } = null!;
 
         public ICollection<OrderDetail> OrderDetails { get; set; }

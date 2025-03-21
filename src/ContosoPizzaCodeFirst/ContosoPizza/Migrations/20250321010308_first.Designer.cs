@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContosoPizza.Migrations
 {
     [DbContext(typeof(ContosoPizzaContext))]
-    [Migration("20250316202833_AddEmail")]
-    partial class AddEmail
+    [Migration("20250321010308_first")]
+    partial class first
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,9 +34,6 @@ namespace ContosoPizza.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
@@ -63,7 +60,7 @@ namespace ContosoPizza.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("OrderFulfilled")
@@ -127,13 +124,9 @@ namespace ContosoPizza.Migrations
 
             modelBuilder.Entity("ContosoPizza.Models.Order", b =>
                 {
-                    b.HasOne("ContosoPizza.Models.Customer", "Customer")
+                    b.HasOne("ContosoPizza.Models.Customer", null)
                         .WithMany("Orders")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
+                        .HasForeignKey("CustomerId");
                 });
 
             modelBuilder.Entity("ContosoPizza.Models.OrderDetail", b =>
